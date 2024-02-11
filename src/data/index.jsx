@@ -1,33 +1,54 @@
-import { Database, Gear, HouseSimple, Lightbulb } from "@phosphor-icons/react";
+import {
+  Gear,
+  HouseSimple,
+  Lightbulb,
+  SignOut,
+  TrendUp,
+  User,
+} from "@phosphor-icons/react";
 
-const menuItems = [
+const MenuItems = [
   {
     id: 1,
     title: "Dashboard",
-    icon: <HouseSimple size={24} />,
+    icon: <HouseSimple size={20} />,
     url: "/dashboard",
   },
 
   {
     id: 2,
     title: "Energy Usage",
-    icon: <Lightbulb size={24} />,
-    url: "/current",
+    icon: <Lightbulb size={20} />,
+    url: "/energy-usage",
   },
 
   {
     id: 3,
-    title: "Historical Data",
-    icon: <Database size={24} />,
-    url: "/historical",
+    title: "Predictive Analytics",
+    icon: <TrendUp size={20} />,
+    url: "/predictive-analytics",
   },
 
   {
     id: 4,
     title: "Settings",
-    icon: <Gear size={24} />,
+    icon: <Gear size={20} />,
     url: "/settings",
   },
 ];
 
-export { menuItems };
+
+const ProfileMenus = [
+  {
+    title: "Profile",
+    icon: <User />,
+    url: "/profile"
+  },
+  {
+    title: "Logout",
+    icon: <SignOut />,
+    url: "auth/login"
+  },
+];
+
+export { MenuItems, ProfileMenus };

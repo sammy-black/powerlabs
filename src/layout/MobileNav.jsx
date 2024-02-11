@@ -3,16 +3,17 @@ import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
 import { Bell, List, Moon, Sun, X } from "@phosphor-icons/react";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { menuItems } from "../data";
+import { MenuItems } from "../data";
 import { blueLogo, david } from "../assets/images";
 import { useTheme } from "@emotion/react";
-import { ColorModeContext, tokens } from "../theme";
+import ProfileMenu from "./ProfileMenu";
+import useSettings from "../hooks/useSettings";
+// import { ColorModeContext, tokens } from "../theme";
 
 const MobileNav = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  const colorMode = useContext(ColorModeContext);
+  const { onToggleMode } = useSettings();
 
   const pathUrl = window.location.pathname;
 
@@ -39,25 +40,18 @@ const MobileNav = () => {
 
           <Stack direction={"row"} spacing={1}>
             <Stack direction={"row"}>
-              <IconButton onClick={colorMode.toggleColorMode}>
+              <IconButton onClick={onToggleMode}>
                 {theme.palette.mode === "dark" ? (
-                  <Moon size={16} />
-                ) : (
                   <Sun size={16} />
+                ) : (
+                  <Moon size={16} />
                 )}
               </IconButton>
               <IconButton>
                 <Bell size={16} />
               </IconButton>
             </Stack>
-            <IconButton sx={{ width: "max-content" }}>
-              <Stack direction={"row"} alignItems={"center"} spacing={1}>
-                <Avatar
-                  src={david}
-                  sx={{ width: 20, height: 20, objectFit: "cover" }}
-                />
-              </Stack>
-            </IconButton>
+            <ProfileMenu isMobile={true} />
           </Stack>
         </Stack>
       </Box>
@@ -67,7 +61,7 @@ const MobileNav = () => {
         <MobileSideBar
           pathUrl={pathUrl}
           toggleSidebar={() => setOpenSidebar(!openSidebar)}
-          colors={colors}
+          // colors={colors}
         />
       )}
     </>
@@ -78,7 +72,7 @@ export default MobileNav;
 
 const MobileSideBar = ({ toggleSidebar, pathUrl, colors }) => {
   const navigate = useNavigate();
-
+  const theme = useTheme();
   const handleOnclick = (url) => {
     toggleSidebar();
     navigate(url);
@@ -87,7 +81,7 @@ const MobileSideBar = ({ toggleSidebar, pathUrl, colors }) => {
   return (
     <Box
       sx={{
-        backgroundColor: colors.primary[400],
+        backgroundColor: theme.palette.background.paper,
         height: "100%",
         position: "absolute",
         width: 243,
@@ -112,14 +106,18 @@ const MobileSideBar = ({ toggleSidebar, pathUrl, colors }) => {
         padding={3}
       >
         <Stack spacing={2.5} paddingBottom={2}>
-          {menuItems.map((el) =>
+          {MenuItems.map((el) =>
             el.url === pathUrl ? (
               <Stack
                 key={el.id}
                 direction="row"
                 alignItems="center"
                 spacing={3.75}
-                sx={{ width: "100%", color: "#FDB73D", cursor: "pointer" }}
+                sx={{
+                  width: "100%",
+                  cursor: "pointer",
+                  color: theme.palette.primary.main,
+                }}
               >
                 {el.icon}
                 <Typography sx={{ fontSize: "14px" }}>{el.title}</Typography>
@@ -130,7 +128,14 @@ const MobileSideBar = ({ toggleSidebar, pathUrl, colors }) => {
                 direction="row"
                 alignItems="center"
                 spacing={3.75}
-                sx={{ width: "100%", cursor: "pointer" }}
+                sx={{
+                  width: "100%",
+                  cursor: "pointer",
+                  color:
+                        theme.palette.mode === "light"
+                          ? "#000"
+                          : theme.palette.text.primary,
+                }}
                 onClick={() => handleOnclick(el.url)}
               >
                 {el.icon}
