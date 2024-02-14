@@ -9,9 +9,9 @@ import 'chartjs-adapter-moment';
 
 
 
-if (import.meta.env.MODE === 'development') {
+// if (import.meta.env.MODE === 'development') {
   makeServer();
-}
+// }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
