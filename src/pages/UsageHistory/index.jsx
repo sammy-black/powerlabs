@@ -63,12 +63,15 @@ const UsageHistory = () => {
         subtitle={"Usage History"}
       />
       <BoxContainer>
-        <Stack alignItems={"center"} sx={{ width: "100%" }} mb={2}>
-          <DateRangePicker
+        <Stack alignItems={{xs:"left", md: "center"}} sx={{ width: "100%" }} mb={2}>
+            <div>
+            <DateRangePicker
             startDate={startDate}
             endDate={endDate}
             setDateRange={setDateRange}
           />
+            </div>
+         
         </Stack>
 
         {/* filter dropdown */}
@@ -78,7 +81,7 @@ const UsageHistory = () => {
             zIndex: 400,
             position: "absolute",
             right: "30px",
-            top: "30px",
+            top: {xs: "20px", sm:"30px"},
           }}
         >
           <Select value={selectedView} onChange={handleChange} size="small">

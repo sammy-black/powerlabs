@@ -21,7 +21,7 @@ const EnergyUsage = () => {
       const energy_usage_kwh = Math.ceil(Math.random() * 150);
 
       setEnergyData((prev) => [
-        ...prev,
+        ...prev.slice(1),
         { timestamp: newTimestamp.toISOString(), energy_usage_kwh },
       ]);
 
