@@ -9,7 +9,7 @@ The Energy Consumption Dashboard is a frontend application that provides easy wa
 
 1. **Clone the Repository:**
    ```bash
-   git clone  https://github.com/sammy-black/powerlabs-test.git
+   git clone  https://github.com/sammy-black/powerlabs.git
 
 Ensure you have Node.js and npm (Node Package Manager) installed on your system.
 
