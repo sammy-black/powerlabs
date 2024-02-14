@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
-import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
-import { Bell, List, Moon, Sun, X } from "@phosphor-icons/react";
-import { useContext, useState } from "react";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { Bell, Moon, Sun, X } from "@phosphor-icons/react";
+import {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MenuItems } from "../data";
-import { blueLogo, david } from "../assets/images";
+import { blueLogo } from "../assets/images";
 import { useTheme } from "@emotion/react";
 import ProfileMenu from "./ProfileMenu";
 import useSettings from "../hooks/useSettings";
-// import { ColorModeContext, tokens } from "../theme";
 
-const MobileNav = () => {
+
+const MobileNav = ({handleNotification}) => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const theme = useTheme();
   const { onToggleMode } = useSettings();
@@ -47,7 +47,7 @@ const MobileNav = () => {
                   <Moon size={16} />
                 )}
               </IconButton>
-              <IconButton>
+              <IconButton onClick={handleNotification} >
                 <Bell size={16} />
               </IconButton>
             </Stack>

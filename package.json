@@ -15,8 +15,11 @@
     "@mui/material": "^5.15.9",
     "@phosphor-icons/react": "^2.0.15",
     "chart.js": "^4.4.1",
+    "chartjs-adapter-moment": "^1.0.1",
+    "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
+    "react-datepicker": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0"
   },
@@ -28,6 +31,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "miragejs": "^0.1.48",
     "vite": "^5.1.0"
   }
 }
